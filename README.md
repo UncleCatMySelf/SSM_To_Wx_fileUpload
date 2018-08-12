@@ -6,6 +6,11 @@
 ## 特点
 便捷，快速，api
 
+## 配置
+
+datasource.properties 数据库配置
+com.myself.util.PathUtil 服务器文件存储地址
+
 ## 下载地址
 
 下载地址：https://github.com/UncleCatMySelf/SSM_To_Wx_fileUpload/releases
