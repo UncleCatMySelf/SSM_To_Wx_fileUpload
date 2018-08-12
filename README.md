@@ -8,11 +8,11 @@
 
 ## 下载地址
 
-下载地址：
+下载地址：https://github.com/UncleCatMySelf/SSM_To_Wx_fileUpload/releases
 
 ## 交流与提问
 
-提问与Bug上报：
+提问与Bug上报：https://github.com/UncleCatMySelf/SSM_To_Wx_fileUpload/issues
 
 QQ群：628793702（仅供交流，不提供问题解答）
 
