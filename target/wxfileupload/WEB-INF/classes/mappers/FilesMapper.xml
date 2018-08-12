@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myself.dao.FilesMapper" >
+  <resultMap id="BaseResultMap" type="com.myself.pojo.Files" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="msg" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="img" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="upload_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, msg, img, create_time, upload_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from files
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from files
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.myself.pojo.Files" >
+    insert into files (id, msg, img, 
+      create_time, upload_time)
+    values (#{id,jdbcType=INTEGER}, #{msg,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
+      now(), now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.myself.pojo.Files" >
+    insert into files
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="msg != null" >
+        msg,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="uploadTime != null" >
+        upload_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null" >
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        now(),
+      </if>
+      <if test="uploadTime != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.myself.pojo.Files" >
+    update files
+    <set >
+      <if test="msg != null" >
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadTime != null" >
+        upload_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.myself.pojo.Files" >
+    update files
+    set msg = #{msg,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      upload_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
